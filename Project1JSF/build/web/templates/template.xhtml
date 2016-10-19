@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.formHeader}</title>
+        <f:event
+            listener="#{plantillaBean.checkLogin()}"
+            type="preRenderView"></f:event>
+    </h:head>
+    <h:body>
+        <div id="pagina">
+            <div id="header">
+                <h>#{str.systemTitle}</h>
+            </div>
+            <div id="menu">
+                <h:form>
+                    <p:menubar>
+                        <p:menuitem value="Inicio" action="Inicio"></p:menuitem>
+                        <p:menuitem value="Usuarios" action="#{usuarioBean.listar()}"></p:menuitem>
+                        <p:menuitem value="Modulos" action="#{moduloBean.listar()}"></p:menuitem>
+                        <p:menuitem value="Roles" action="#{rolBean.listar()}"></p:menuitem>
+                        <p:menuitem value="Obras" action="#{obraBean.listar()}"></p:menuitem>
+                        <p:menuitem value="Proyectos" action="#{proyectoBean.listar()}"></p:menuitem>
+                        <p:menuitem value="Permisos"></p:menuitem>
+                    </p:menubar>
+                </h:form>
+            </div>
+            <div id="contenido">
+                <ui:insert name="contenido">
+                    <h2>#{str.systemWelcome}</h2>
+                </ui:insert>
+            </div>
+            <div id="pie">
+                <p><strong>#{str.developer}</strong>
+                    #{str.myname}
+                </p>
+            </div>
+        </div>
+    </h:body>
+</html>
+

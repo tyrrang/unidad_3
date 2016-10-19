@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.proyectListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.proyectListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{proyectoBean.iniciar()}"></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{proyectoBean.proyectos}" var="p">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{proyectoBean.editar(p)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.proyectNameHeader}">
+                        <p:outputLabel value="#{p.nombreProyecto}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.proyectTypeHeader}">
+                        <p:outputLabel value="#{p.tipoProyecto}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.proyectResponsableHeader}">
+                        <p:outputLabel value="#{p.responsable}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.workNameHeader}">
+                        <p:outputLabel value="#{p.obra.nombre}"></p:outputLabel>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
